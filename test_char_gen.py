@@ -1,76 +1,141 @@
 from unittest import TestCase
 
-from char_gen import generate_character, Character
+from char_gen import Character
 
 
 class CharGenTests(TestCase):
 
+    def setUp(self):
+        data = {
+            'name': 'abc',
+            'gender': 'male',
+            'race' : 'elf',
+            'sub_race': 'snow',
+            'cls_1': 'fighter',
+            'cls_2': 'barbarian',
+            'sub_cls_1': 'black_jacket',
+            'sub_cls_2': 'berserker',
+            'culture':  'ixamitl_plains',
+            'background': 'hunter',
+            'faction': 'principi'
+        }
+        self.char = Character(**data)
+        data_1 = {
+            'name': 'abc',
+            'gender': 'male',
+            'race' : 'elf',
+            'sub_race': 'snow',
+            'cls_1': 'priest',
+            'cls_2': 'paladin',
+            'sub_cls_1': 'eothas',
+            'sub_cls_2': 'kind_wayfarers',
+            'culture':  'ixamitl_plains',
+            'background': 'hunter',
+            'faction': 'principi'
+        }
+        self.char_2 = Character(**data_1)
+
     def test_x(self):
-        char = generate_character(name='Test 1', gender='male', char_class='cipher', race='human')
-        self.assertEqual(char.gender, 'male')
-        self.assertEqual(char.char_class, 'cipher')
-        self.assertEqual(char.score, 31)
-        char = generate_character(name='Test 2', gender='female', char_class='cipher', race='human')
-        self.assertEqual(char.gender, 'female')
-        self.assertEqual(char.char_class, 'cipher')
-        self.assertEqual(char.score, 35)
-        char = generate_character(name='Test 3', gender='female', char_class='cipher', sub_class='ascendant', race='human')
-        self.assertEqual(char.sub_class, 'ascendant')
-        self.assertEqual(char.score, 35)
-        char = generate_character(name='Test 4', gender='female', char_class='druid', sub_class='fury', race='human')
-        self.assertEqual(char.sub_class, 'fury')
-        self.assertEqual(char.score, 34)
-        char = generate_character(
-            name='Test 5',
-            gender='female',
-            char_class='druid',
-            sub_class='fury',
-            race='human',
-            culture='old_vailia'
-        )
-        self.assertEqual(char.score, 48)
-        char = generate_character(
-            name='Test 6',
-            gender='female',
-            char_class='druid',
-            sub_class='fury',
-            race='human',
-            culture='old_vailia',
-            background='merchant'
-        )
-        self.assertEqual(char.score, 60)
-        self.fail('x')
+        result = self.char.sheet
+        expected = {
+            'data': {
+                'relationships': {
+                    'culture': {
+                        'data': {
+                            'attributes': {
+                                'type': 'ixamitl_plains',
+                                'score': 13,
+                                'sub_type': 'hunter'
+                            }
+                        }
+                    },
+                    'classes': {
+                        'data': [
+                            {
+                                'attributes': {
+                                    'sub_type': 'black_jacket',
+                                    'type': 'fighter',
+                                    'score': 1
+                                }
+                            }, {
+                                'attributes': {
+                                    'sub_type': 'berserker',
+                                    'type': 'barbarian',
+                                    'score': 3
+                                }
+                            }
+                        ]
+                    },
+                    'race': {
+                        'data': {
+                            'attributes': {
+                                'sub_type': 'snow',
+                                'type': 'elf'
+                            }
+                        }
+                    }
+                },
+                'type': 'character',
+                'attributes': {
+                    'faction': 'principi',
+                    'name': 'abc'
+                }
+            }
+        }
+        self.assertEqual(result, expected)
 
     def test_y(self):
-        char = generate_character(
-            name='Test 7',
-            gender='female',
-            char_class='fighter',
-            sub_class='fury',
-            race='human',
-            culture='the_living_lands',
-            background='aristocrat'
-        )
-        self.assertEqual(char.score, 21)
-
-    def test_a(self):
-        char = generate_character(
-            name='Test 7',
-            gender='female',
-            char_class_1='paladin',
-            sub_class_1='ascendant',
-            race='human',
-            culture='the_living_lands',
-            background='aristocrat'
-        )
-        print(char.get_sheet())
-        self.fail('x')
+        result = self.char_2.sheet
+        expected = {
+            'data': {
+                'type': 'character',
+                'relationships': {
+                    'race': {
+                        'data': {
+                            'attributes': {
+                                'sub_type': 'snow',
+                                'score': 1,
+                                'type': 'elf'
+                            }
+                        }
+                    },
+                    'classes': {
+                        'data': [
+                            {
+                                'attributes': {
+                                    'sub_type': 'eothas',
+                                    'type': 'priest',
+                                    'score': 39
+                                }
+                            },
+                            {
+                                'attributes': {
+                                    'sub_type': 'kind_wayfarers',
+                                    'type': 'paladin',
+                                    'score': 10
+                                }
+                            }
+                        ]
+                    },
+                    'culture': {
+                        'data': {
+                            'attributes': {
+                                'sub_type': 'hunter',
+                                'type': 'ixamitl_plains',
+                                'score': 13
+                            }
+                        }
+                    }
+                },
+                'attributes': {
+                    'name': 'abc',
+                    'faction': 'principi'
+                }
+            }
+        }
+        self.assertEqual(result, expected)
 
     def test_z(self):
-        char = generate_character(random=True)
-        print(char.get_sheet())
+        char = Character()
+        x = char.print_out()
         self.fail('x')
-
-    def test_123(self):
-        char = Character(name='abc')
-        self.assertEqual(char.get_char(), 'abc')

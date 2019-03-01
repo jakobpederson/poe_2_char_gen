@@ -61,6 +61,7 @@ SUBCLASS = {
         'ascendant': 0,
         'beguiler': 0,
         'soul_blade': 0,
+        'none': 0,
     },
     'priest': {
         'magran': 25,
@@ -79,6 +80,7 @@ SUBCLASS = {
         'ghost_heart': 13,
         'stalker': 1,
         'sharpshooter': 0,
+        'none': 0,
     },
     'wizard': {
         'conjurer': 0,
@@ -86,16 +88,19 @@ SUBCLASS = {
         'enchanter': 1,
         'evoker': 0,
         'transmuter': 0,
+        'none': 0,
     },
     'chanter': {
         'skald': 1,
         'troubadour': 0,
         'beckoner': 0,
+        'none': 0,
     },
     'monk': {
         'nalpazca': 1,
         'shattered_pillar': 0,
         'helwalker': 0,
+        'none': 0,
     },
     'paladin': {
         'goldpact_knights': 16,
@@ -108,16 +113,19 @@ SUBCLASS = {
         'assassin': 4,
         'trickster': 3,
         'streetfighter': 1,
+        'none': 0,
     },
     'barbarian': {
         'corpse eater': 2,
         'berserker': 0,
         'mage_killer': 0,
+        'none': 0,
     },
     'fighter': {
         'black_jacket': 1,
         'unbroken': 0,
         'devoted': 0,
+        'none': 0,
     }
 }
 
@@ -335,4 +343,38 @@ NAMES = [
     'Varren',
     'Ehrlen',
     'Khârn',
+    'Aenarion',
+    'Alarielle',
+    'Alith Anar'
+    'Eltharion'
+    'Asarnil'
+    'Finubar',
+    'Imrik',
+    'Teclis',
+    'Tyrion',
+    'Caradryan',
+    'Korhil',
+    'Selafyn of the Annulii',
+    'Malekith',
+    'Malus Darkblade',
+    'Morathi',
+    'Shadowblade',
+    'Hellebron',
+    'Lokhir Fellheart',
+    'Kouran',
+    'Tullaris',
+    'Hubris Rakarth',
+    'Alarie the Mad',
+    'Alrik Ranulfsson',
+    'Garagrim Ironfist',
+    'Gotrek Gurnisson',
+    'Grimnir',
+    'Grombrindal the White Dwarf',
+    'Josef Bugman',
+    'King Kazador',
+    'Malakai Makaisson',
+    'Snorri Nosebiter',
+    'Thorek Ironbow',
+    'Thorgrim Grudgebearer',
+    'Ungrim Ironfist',
 ]
